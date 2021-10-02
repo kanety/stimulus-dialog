@@ -1,0 +1,46 @@
+.st-dialog {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  background-color: #fff;
+
+  .st-dialog__title {
+    display: flex;
+    justify-content: space-between;
+  }
+  .st-dialog__drag {
+    cursor: move;
+  }
+}
+.st-dialog-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.st-dialog--visible {
+  display: block !important;
+}
+.st-dialog--disable-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+.st-dialog--disable-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script type="importmap">
+    {
+      "imports": {
+        "@hotwired/stimulus": "/node_modules/@hotwired/stimulus/dist/stimulus.js",
+        "@kanety/stimulus-static-actions": "/node_modules/@kanety/stimulus-static-actions/dist/index.module.js",
+        "@kanety/stimulus-dialog": "/dist/index.module.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import { Application, Controller } from '@hotwired/stimulus';
+    import '@kanety/stimulus-static-actions';
+    import DialogController from '@kanety/stimulus-dialog';
+    const application = Application.start();
+    application.register('dialog', DialogController);
+  </script>
+  <link rel="stylesheet" href="/dist/index.css"></link>
+</head>
+<body>
+  <h1>Callbacks</h1>
+  <div data-controller="dialog">
+    <div class="st-dialog" data-dialog-target="dialog">
+      <p>content1</p>
+      <p>content2</p>
+      <hr>
+      <button type="button" value="ok" data-action="dialog#close">OK</button>
+      <button type="button" value="cancel" data-action="dialog#close">Cancel</button>
+    </div>
+    <button type="button" value="open" data-action="dialog#open">Open</button>
+  </div>
+  <script>
+    let element = document.querySelector('[data-controller="dialog"]');
+    element.addEventListener('dialog:opened', e => {
+      alert('opened by ' + e.detail.target.value);
+    });
+    element.addEventListener('dialog:closed', e => {
+      alert('closed by ' + e.detail.target.value);
+    });
+  </script>
+</body>
+</html>
