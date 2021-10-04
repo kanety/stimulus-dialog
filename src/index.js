@@ -7,18 +7,18 @@ import Dragger from './dragger';
 export default class extends Controller {
   static targets = ['dialog', 'modal', 'focus', 'drag'];
   static actions = [
-    ['drag', 'mousedown->dragStart'],
-    ['drag', 'touchstart->dragStart'],
+    ['element', ':open->open'],
+    ['element', ':close->close'],
     ['element', 'keydown@window->closeByKey'],
     ['modal', 'click->closeByModal'],
-    ['element', 'dialog:open->open'],
-    ['element', 'dialog:close->close']
+    ['drag', 'mousedown->dragStart'],
+    ['drag', 'touchstart->dragStart']
   ];
   static dragActions = [
     ['element', 'mousemove@window->dragMove'],
     ['element', 'touchmove@window->dragMove'],
     ['element', 'mouseup@window->dragEnd'],
-    ['element', 'touchend@window->dragEnd'],
+    ['element', 'touchend@window->dragEnd']
   ];
 
   initialize() {
