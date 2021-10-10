@@ -66,7 +66,6 @@ export default class extends Controller {
 
   openBy(target) {
     this.toggleClass(true);
-    if (this.hasModalTarget) this.toggleModalClass(true);
 
     if (this.hasFocusTarget) {
       this.focusTarget.focus();
@@ -77,17 +76,15 @@ export default class extends Controller {
 
   closeBy(target) {
     this.toggleClass(false);
-    if (this.hasModalTarget) this.toggleModalClass(false);
 
     this.dispatch('closed', { detail: { target: target } });
   }
 
   toggleClass(visible) {
     this.dialogTarget.classList.toggle('st-dialog--visible', visible);
-  }
-
-  toggleModalClass(visible) {
-    this.modalTarget.classList.toggle('st-dialog-modal--visible', visible);
-    document.body.classList.toggle('st-dialog--disable-scroll', visible);
+    if (this.hasModalTarget) {
+      this.modalTarget.classList.toggle('st-dialog-modal--visible', visible);
+      document.body.classList.toggle('st-dialog--disable-scroll', visible);
+    }
   }
 }
