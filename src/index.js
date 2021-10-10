@@ -65,11 +65,9 @@ export default class extends Controller {
   }
 
   openBy(target) {
-    this.dialogTarget.classList.add('st-dialog--visible');
-  
-    if (this.hasModalTarget) {
-      this.setModal();
-    }
+    this.toggleClass(true);
+    if (this.hasModalTarget) this.toggleModalClass(true);
+
     if (this.hasFocusTarget) {
       this.focusTarget.focus();
     }
@@ -78,22 +76,18 @@ export default class extends Controller {
   }
 
   closeBy(target) {
-    this.dialogTarget.classList.remove('st-dialog--visible');
-
-    if (this.hasModalTarget) {
-      this.unsetModal();
-    }
+    this.toggleClass(false);
+    if (this.hasModalTarget) this.toggleModalClass(false);
 
     this.dispatch('closed', { detail: { target: target } });
   }
 
-  setModal() {
-    this.modalTarget.classList.add('st-dialog--visible');
-    document.body.classList.add('st-dialog--disable-scroll');
+  toggleClass(visible) {
+    this.dialogTarget.classList.toggle('st-dialog--visible', visible);
   }
-  
-  unsetModal() {
-    this.modalTarget.classList.remove('st-dialog--visible');
-    document.body.classList.remove('st-dialog--disable-scroll');
+
+  toggleModalClass(visible) {
+    this.modalTarget.classList.toggle('st-dialog-modal--visible', visible);
+    document.body.classList.toggle('st-dialog--disable-scroll', visible);
   }
 }

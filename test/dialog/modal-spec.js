@@ -23,21 +23,21 @@ describe('modal', () => {
 
   it('opens modal', () => {
     $('button[value="open"]').click();
-    expect($('[data-dialog-target="modal"]').matches('.st-dialog--visible')).toEqual(true);
+    expect($('[data-dialog-target="modal"]').matches('.st-dialog-modal--visible')).toEqual(true);
     expect($('[data-dialog-target="dialog"]').matches('.st-dialog--visible')).toEqual(true);
   });
 
   it('closes modal', () => {
     $('button[value="open"]').click();
     $('button[value="ok"]').click();
-    expect($('[data-dialog-target="modal"]').matches('.st-dialog--visible')).toEqual(false);
+    expect($('[data-dialog-target="modal"]').matches('.st-dialog-modal--visible')).toEqual(false);
     expect($('[data-dialog-target="dialog"]').matches('.st-dialog--visible')).toEqual(false);
   });
 
   it('closes modal by mouse', () => {
     $('button[value="open"]').click();
     $('[data-dialog-target="modal"]').click();
-    expect($('[data-dialog-target="modal"]').matches('.st-dialog--visible')).toEqual(false);
+    expect($('[data-dialog-target="modal"]').matches('.st-dialog-modal--visible')).toEqual(false);
     expect($('[data-dialog-target="dialog"]').matches('.st-dialog--visible')).toEqual(false);
   });
 });

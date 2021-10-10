@@ -15,6 +15,10 @@
     cursor: move;
   }
 }
+.st-dialog--visible {
+  display: block;
+}
+
 .st-dialog-modal {
   display: none;
   position: fixed;
@@ -28,10 +32,10 @@
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
 }
-
-.st-dialog--visible {
-  display: block !important;
+.st-dialog-modal--visible {
+  display: block;
 }
+
 .st-dialog--disable-scroll {
   height: 100%;
   overflow: hidden;
