@@ -81,10 +81,18 @@ export default class extends Controller {
   }
 
   toggleClass(visible) {
-    this.dialogTarget.classList.toggle('st-dialog--visible', visible);
-    if (this.hasModalTarget) {
-      this.modalTarget.classList.toggle('st-dialog-modal--visible', visible);
-      document.body.classList.toggle('st-dialog--disable-scroll', visible);
+    if (visible) {
+      this.dialogTarget.classList.add('st-dialog--visible');
+      if (this.hasModalTarget) {
+        this.modalTarget.classList.add('st-dialog-modal--visible');
+        document.body.classList.add('st-dialog--disable-scroll');
+      }
+    } else {
+      this.dialogTarget.classList.remove('st-dialog--visible');
+      if (this.hasModalTarget) {
+        this.modalTarget.classList.remove('st-dialog-modal--visible');
+        document.body.classList.remove('st-dialog--disable-scroll');
+      }
     }
   }
 }
