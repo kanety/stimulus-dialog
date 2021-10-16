@@ -1,9 +1,3 @@
-import { Application } from '@hotwired/stimulus';
-import DialogController from 'index';
-
-const application = Application.start();
-application.register('dialog', DialogController);
-
 describe('drag', () => {
   beforeEach(() => {
     document.body.innerHTML = `
