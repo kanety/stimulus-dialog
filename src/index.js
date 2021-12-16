@@ -35,6 +35,15 @@ export default class extends Controller {
     e.preventDefault();
   }
 
+  toggle(e) {
+    if (this.isVisible()) {
+      this.closeBy(e.target);
+    } else {
+      this.openBy(e.target);
+    }
+    e.preventDefault();
+  }
+
   closeByKey(e) {
     if (e.keyCode == 27) {
       this.closeBy(e.target);
@@ -62,6 +71,10 @@ export default class extends Controller {
   dragEnd(e) {
     this.dragger.end([e.pageX, e.pageY]);
     this.context.actionSet.remove(this.constructor.dragActions);
+  }
+
+  isVisible() {
+    return this.dialogTarget.classList.contains('st-dialog--visible');
   }
 
   openBy(target) {
