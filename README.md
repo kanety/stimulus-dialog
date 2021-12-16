@@ -97,12 +97,19 @@ element.addEventListener('dialog:closed', e => {
 
 ### Event operations
 
-Open or close dialog via event:
+Open, close or toggle dialog via event:
+
+```html
+<div data-controller="dialog"
+     data-action="dialog:open->dialog#open dialog:close->dialog#close dialog:toggle->dialog#toggle">
+</div>
+```
 
 ```javascript
 let element = document.querySelector('[data-controller="dialog"]');
 element.dispatchEvent(new CustomEvent('dialog:open'));
 element.dispatchEvent(new CustomEvent('dialog:close'));
+element.dispatchEvent(new CustomEvent('dialog:toggle'));
 ```
 
 ## License
